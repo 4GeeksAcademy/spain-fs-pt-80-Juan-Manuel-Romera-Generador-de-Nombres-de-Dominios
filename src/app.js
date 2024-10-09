@@ -1,10 +1,3 @@
-/* eslint-disable */
-import "bootstrap";
-import "./style.css";
-
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
 const resultadoElemento = document.getElementById("resultado");
 const botonGenerar = document.getElementById("boton-generar");
 
@@ -34,3 +27,24 @@ const generarDominio = () => {
   }
   return partesDominio.join("");
 };
+
+const generarTodasLasCombinaciones = () => {
+  let combinaciones = [];
+
+  for (let i = 0; i < frases[0].length; i++) {
+    for (let j = 0; j < frases[1].length; j++) {
+      for (let k = 0; k < frases[2].length; k++) {
+        let combinacionParcial = frases[0][i] + frases[1][j] + frases[2][k];
+
+        for (let l = 0; l < frases[3].length; l++) {
+          combinaciones.push(`${combinacionParcial}${frases[3][l]}`);
+        }
+      }
+    }
+  }
+
+  return combinaciones;
+};
+
+const todasLasCombinaciones = generarTodasLasCombinaciones();
+todasLasCombinaciones.forEach(dominio => console.log(`${dominio}`));
